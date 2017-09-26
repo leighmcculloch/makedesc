@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"strings"
 
 	"4d63.com/makefile"
 )
@@ -49,10 +48,7 @@ func main() {
 		return
 	}
 
-	targetNames := []string{}
 	for _, target := range m.Targets {
-		targetNames = append(targetNames, target.Name)
+		fmt.Fprintln(os.Stdout, target.Name)
 	}
-
-	fmt.Fprintf(os.Stderr, "Targets: %s\n", strings.Join(targetNames, ", "))
 }
