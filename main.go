@@ -9,8 +9,11 @@ import (
 	"4d63.com/makefile"
 )
 
+var version = "<not set>"
+
 func main() {
 	printHelp := flag.Bool("help", false, "print this help list")
+	printVersion := flag.Bool("version", false, "print program version")
 	filename := flag.String("file", "Makefile", "a Makefile")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Makedesc is a tool for describing makefiles.\n\n")
@@ -23,6 +26,11 @@ func main() {
 
 	if *printHelp {
 		flag.Usage()
+		return
+	}
+
+	if *printVersion {
+		fmt.Fprintln(os.Stderr, version)
 		return
 	}
 
